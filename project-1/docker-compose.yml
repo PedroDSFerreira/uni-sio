@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  app:
+    build: ./app
+    command: python main.py
+    ports:
+      - "7000:7000"
+  app_sec:
+    build: ./app_sec
+    command: python main.py
+    ports:
+      - "8000:8000"
+      - "443:443"
+    
+    

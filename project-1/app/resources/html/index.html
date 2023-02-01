@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link rel="shortcut icon" type="image/png" href="images/logo.png">
+  
+  <title>Best Health</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+
+
+
+<body class="cover_background" onload="getReviews(); showSlides()">
+
+  <!-- NAVBAR -->
+  <nav class="navbar  navbar-expand-md navbar-dark bg-dark fixed-top ">
+    <a href="index">
+      <img class="navbar-brand" src="images/logo.png" width=39>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault"
+    aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-light rounded border border-dark bg-secondary mr-3 ml-2 pl-2" onclick="changeVisibility('test_results')">
+            Test Results
+          </a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <input id="query" class="form-control mr-sm-2" type="search" placeholder="Search services" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="queryResults()">Search</button>
+      </div>
+    </div>
+  </nav>
+
+  
+  <main role="main" style="margin-top: 13vh;">
+
+    <!-- SLIDESHOW -->
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="images/caroussel_1.jpg" style="width:100%" class="caroussel_image">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="images/caroussel_2.jpg" style="width:100%" class="caroussel_image">
+    </div>
+  </div>
+
+    
+    <div class="main_text " style="padding-top: 5vh;padding-bottom: 5vh;">
+      <h1 class="text-white font-weight-bold">Best Health</h1>
+      <p class="text-light h2">Health Clinic</p>
+      <br>
+      <p class="text-light align-middle mx-5 px-5">We see patients and their families from around the world and try to make it as easy as possible to get care at Cleveland Clinic London. Our Global Patient Services Team will help make arrangements or answer any questions you and your family have. Cleveland Clinic London also offers on-site interpreting services to help you have the best experience possible once you are here.</p> 
+    </div>
+
+    <div class="main_text " style="padding-top: 10vh;"></div>
+  </main>
+
+  <div class="footer" >
+    <div class="container">
+      <div class="row">
+        <div id = "contact_us" class="col-sm">
+          <h1>Contact Us</h1>
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text px-3">Name</span>
+            </div>
+            <input id="comment_name" type="text" class="form-control" aria-label="Name">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text px-3">Email</span>
+            </div>
+            <input id="comment_email" type="text" class="form-control" aria-label="Email">
+          </div>
+
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text px-3">Phone</span>
+            </div>
+            <input id="comment_phone" type="text" class="form-control" aria-label="Phone">
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text px-3">Message</span>
+            </div>
+            <textarea id="comment_message" class="form-control" aria-label="Message"></textarea>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary btn-lg btn-block mt-4" type="submit" onclick="submitComment()">Submit</button>  
+          </div>
+        </div>
+
+
+        <div id="reviews" class="col-sm">
+          <h1>Reviews</h1>
+          <br>
+          <div style="height: 242px;overflow-y: auto;">
+            <table id="reviews_table" class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-lg btn-block mt-4" onclick="changeVisibility('write_review')">Write a Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMS -->
+  <div id ="test_results" class="box container" style="display: none;">
+    <br>
+    <h1>Test Results</h1>
+    <br>
+
+    <div class="p-4 mt-5">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text px-3">Code</span>
+        </div>
+        <input id="code" type="text" class="form-control" aria-label="Code">
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg btn-block mt-4" type="submit" onclick="submitCode()">Submit</button>  
+        <button class="btn btn-secondary btn-lg btn-block mt-4" type="submit" onclick="changeVisibility('test_results')">Close</button>   
+      </div>
+    </div>
+  </div>
+
+  <div id ="write_review" class="box" style="display: none;">
+    <br>
+    <h1>Write a Review</h1>
+    <br>
+
+    <div class="p-4 mt-2">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text px-3">Name</span>
+        </div>
+        <input id="review_name" type="text" class="form-control" aria-label="Name">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text px-3">Email</span>
+        </div>
+        <input id="review_email" type="text" class="form-control" aria-label="Email">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text px-3">Message</span>
+        </div>
+        <input id="review_message" type="text" class="form-control" aria-label="Message">
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg btn-block mt-4" type="submit" onclick="submitReview()">Submit</button>  
+        <button class="btn btn-secondary btn-lg btn-block mt-4" type="submit" onclick="changeVisibility('write_review')">Close</button>   
+      </div>
+    </div>
+  </div>
+
+
+  <div id ="search_services" class="box" style="display: none;">
+    <br>
+    <h1>Search Results</h1>
+    <br>
+
+    <div class="autocomplete p-4 mt-2">
+      <div style="height: 25vh;overflow-y: auto;">
+        <table id="search_results" class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-secondary btn-lg btn-block mt-4" type="submit" onclick="changeVisibility('search_services')">Close</button>   
+      </div> 
+  </div>
+
+  <!--  -->
+</body>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="js/popper.min.js"></script>
+<script src="js/requests.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/main.js"></script>
+
+</html>
